@@ -1142,7 +1142,8 @@ bool M5EPD_Canvas::drawJpgUrl(String url, uint16_t x,
         log_e("Not connected");
         return 0;
     }
-
+    // NOTE: set timeout to 60sec because puppeteer may takes time than default 5sec.
+    http.setTimeout(60000);
     http.begin(url);
 
     int httpCode = http.GET();
